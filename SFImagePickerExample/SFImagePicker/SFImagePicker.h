@@ -13,6 +13,11 @@
  * To implement and make this class working :
  * A) Copy SFImagePicker.h/m , SFImagePickerCell.h/m and ImagePicker.storyboard to your project
  * B) You can change icons but if you want to use icons copy the SFImagePicker folder from Images.cxassets
+ * C) Don't Forget about Plist and add this lines :
+    <key>NSCameraUsageDescription</key>
+	<string>Your description</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Your description</string>
  * @param : Delegate (you need to set delegate to get selected photo)
  * @param : Option to chose between front and back camera
  * @return : Selected photo in delegate
