@@ -88,6 +88,29 @@
 
 - (void)initCamera
 {
+    // Check Authorization status
+    if ([self getAuthorizationStatus] == AVAuthorizationStatusDenied) {
+        
+        // Create alertController
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Ops!" message:@"You have not authorized us to access your camera.\n To change that go to your setting and change camera authorization" preferredStyle:UIAlertControllerStyleAlert];
+        
+        // Add button
+        UIAlertAction *button = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self closeSFImagePicker];
+            });
+        }];
+        [alertController addAction:button];
+        
+        // Present alert (show)
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self presentViewController:alertController animated:YES completion:nil];
+        });
+        
+        return;
+    }
+
+    
     //Capture Session
     self.captureSession = [AVCaptureSession new];
     self.captureSession.sessionPreset = AVCaptureSessionPresetPhoto;
@@ -211,6 +234,14 @@
     }];
 }
 
+// MARK: - Authorization
+
+- (AVAuthorizationStatus)getAuthorizationStatus
+{
+    AVAuthorizationStatus status = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo];
+    
+    return status;
+}
 
 // MARK: - Photo gallery
 
