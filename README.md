@@ -29,7 +29,7 @@ You can use this delegate to controll the selected photo.
 ```
 ## Versioning
 
-Version 1.0.0
+Version 1.1.0
 
 ## Author
 Sattar Falahati 

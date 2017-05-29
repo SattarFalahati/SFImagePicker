@@ -9,12 +9,15 @@
 #import "SFImagePicker.h"
 
 // Freamworks
-#import <AVFoundation/AVFoundation.h>
-#import <Photos/Photos.h>
+@import AVFoundation;
+@import Photos;
+@import MediaPlayer;
 
 // CELL
 #import "SFImagePickerCell.h"
 
+// Defines
+#define  KCapturePhotoWithVolume   @"outputVolume"
 #define RGBA(r, g, b, a)                [UIColor colorWithRed:r/255.0 green:g/255.0 blue:b/255.0 alpha:a]
 
 @interface SFImagePicker () <UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
@@ -37,6 +40,9 @@
 
 // Check for collection view size
 @property (nonatomic) BOOL collectionBigSize;
+
+// Handle audioSession to take photo with volume buttons
+@property (strong, nonatomic) AVAudioSession *audioSession;
 
 @end
 
@@ -76,13 +82,49 @@
     self.imageManager = [PHCachingImageManager new];
     [self initialImageGalleryCollection];
     [self checkForAuthorization];
+    
+    // Initial audio session
+    [self initAudioSession];
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
     
+    // Hide volume view
+    CGRect frame = CGRectMake(-1000, -1000, 100, 100);
+    MPVolumeView *volumeView = [[MPVolumeView alloc] initWithFrame:frame];
+    [volumeView sizeToFit];
+    [self.view addSubview:volumeView];
 }
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    
+    // Remove observer
+    [self.audioSession removeObserver:self forKeyPath:KCapturePhotoWithVolume];
+}
+
+// MARK: - Capture photo with Volume button
+
+- (void)initAudioSession
+{
+    self.audioSession = [AVAudioSession sharedInstance];
+    [self.audioSession  setActive:YES error:nil];
+    
+    [self.audioSession addObserver:self forKeyPath:KCapturePhotoWithVolume options:0 context:nil];
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+{
+    if ([keyPath isEqual:KCapturePhotoWithVolume]) {
+        
+        // Capture photo
+        [self capturePhoto];
+    }
+}
+
 
 // MARK: - Camera
 
@@ -367,9 +409,7 @@
 
 - (IBAction)btnCapturePhoto:(id)sender
 {
-    [self captureOutputImageWithCompletionBlock:^(UIImage *image) {
-        [self photoSelected:image];
-    }];
+    [self capturePhoto];
 }
 
 - (IBAction)btnResizeCollection:(id)sender
@@ -408,6 +448,13 @@
     } completion:^(BOOL finished) {
         // Enable button
         [self.btnResize setEnabled: YES];
+    }];
+}
+
+- (void)capturePhoto
+{
+    [self captureOutputImageWithCompletionBlock:^(UIImage *image) {
+        [self photoSelected:image];
     }];
 }
 
