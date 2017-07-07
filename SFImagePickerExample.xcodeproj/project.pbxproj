@@ -7,18 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DC464A6C1F0F74BC009DBB45 /* ImagePicker.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DC464A6B1F0F74BC009DBB45 /* ImagePicker.storyboard */; };
+		DC464A6F1F0F7550009DBB45 /* SFImagePickerPreview.m in Sources */ = {isa = PBXBuildFile; fileRef = DC464A6E1F0F7550009DBB45 /* SFImagePickerPreview.m */; };
 		F5E9F47E1E8E87A000BF5756 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F5E9F47D1E8E87A000BF5756 /* main.m */; };
 		F5E9F4811E8E87A000BF5756 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F5E9F4801E8E87A000BF5756 /* AppDelegate.m */; };
 		F5E9F4841E8E87A000BF5756 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5E9F4831E8E87A000BF5756 /* ViewController.m */; };
 		F5E9F4871E8E87A000BF5756 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F5E9F4851E8E87A000BF5756 /* Main.storyboard */; };
 		F5E9F4891E8E87A000BF5756 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F5E9F4881E8E87A000BF5756 /* Assets.xcassets */; };
 		F5E9F48C1E8E87A000BF5756 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F5E9F48A1E8E87A000BF5756 /* LaunchScreen.storyboard */; };
-		F5E9F4991E8E888C00BF5756 /* ImagePicker.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F5E9F4941E8E888C00BF5756 /* ImagePicker.storyboard */; };
 		F5E9F49A1E8E888C00BF5756 /* SFImagePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = F5E9F4961E8E888C00BF5756 /* SFImagePicker.m */; };
 		F5E9F49B1E8E888C00BF5756 /* SFImagePickerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F5E9F4981E8E888C00BF5756 /* SFImagePickerCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		DC464A6B1F0F74BC009DBB45 /* ImagePicker.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ImagePicker.storyboard; sourceTree = "<group>"; };
+		DC464A6D1F0F7550009DBB45 /* SFImagePickerPreview.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFImagePickerPreview.h; sourceTree = "<group>"; };
+		DC464A6E1F0F7550009DBB45 /* SFImagePickerPreview.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFImagePickerPreview.m; sourceTree = "<group>"; };
 		F5E9F4791E8E87A000BF5756 /* SFImagePickerExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SFImagePickerExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5E9F47D1E8E87A000BF5756 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		F5E9F47F1E8E87A000BF5756 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -29,7 +33,6 @@
 		F5E9F4881E8E87A000BF5756 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F5E9F48B1E8E87A000BF5756 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F5E9F48D1E8E87A000BF5756 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F5E9F4941E8E888C00BF5756 /* ImagePicker.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ImagePicker.storyboard; sourceTree = "<group>"; };
 		F5E9F4951E8E888C00BF5756 /* SFImagePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFImagePicker.h; sourceTree = "<group>"; };
 		F5E9F4961E8E888C00BF5756 /* SFImagePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFImagePicker.m; sourceTree = "<group>"; };
 		F5E9F4971E8E888C00BF5756 /* SFImagePickerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFImagePickerCell.h; sourceTree = "<group>"; };
@@ -91,11 +94,13 @@
 		F5E9F4931E8E888C00BF5756 /* SFImagePicker */ = {
 			isa = PBXGroup;
 			children = (
-				F5E9F4941E8E888C00BF5756 /* ImagePicker.storyboard */,
+				DC464A6B1F0F74BC009DBB45 /* ImagePicker.storyboard */,
 				F5E9F4951E8E888C00BF5756 /* SFImagePicker.h */,
 				F5E9F4961E8E888C00BF5756 /* SFImagePicker.m */,
 				F5E9F4971E8E888C00BF5756 /* SFImagePickerCell.h */,
 				F5E9F4981E8E888C00BF5756 /* SFImagePickerCell.m */,
+				DC464A6D1F0F7550009DBB45 /* SFImagePickerPreview.h */,
+				DC464A6E1F0F7550009DBB45 /* SFImagePickerPreview.m */,
 			);
 			path = SFImagePicker;
 			sourceTree = "<group>";
@@ -131,6 +136,7 @@
 				TargetAttributes = {
 					F5E9F4781E8E87A000BF5756 = {
 						CreatedOnToolsVersion = 8.3;
+						DevelopmentTeam = F34AC6Q5BM;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -160,7 +166,7 @@
 			files = (
 				F5E9F48C1E8E87A000BF5756 /* LaunchScreen.storyboard in Resources */,
 				F5E9F4891E8E87A000BF5756 /* Assets.xcassets in Resources */,
-				F5E9F4991E8E888C00BF5756 /* ImagePicker.storyboard in Resources */,
+				DC464A6C1F0F74BC009DBB45 /* ImagePicker.storyboard in Resources */,
 				F5E9F4871E8E87A000BF5756 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -175,6 +181,7 @@
 				F5E9F49A1E8E888C00BF5756 /* SFImagePicker.m in Sources */,
 				F5E9F4841E8E87A000BF5756 /* ViewController.m in Sources */,
 				F5E9F4811E8E87A000BF5756 /* AppDelegate.m in Sources */,
+				DC464A6F1F0F7550009DBB45 /* SFImagePickerPreview.m in Sources */,
 				F5E9F49B1E8E888C00BF5756 /* SFImagePickerCell.m in Sources */,
 				F5E9F47E1E8E87A000BF5756 /* main.m in Sources */,
 			);
@@ -296,7 +303,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = F34AC6Q5BM;
 				INFOPLIST_FILE = SFImagePickerExample/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -309,7 +316,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = F34AC6Q5BM;
 				INFOPLIST_FILE = SFImagePickerExample/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -337,6 +344,7 @@
 				F5E9F4921E8E87A000BF5756 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

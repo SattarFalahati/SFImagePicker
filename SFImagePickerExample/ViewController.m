@@ -34,6 +34,7 @@
     SFImagePicker *next = [storyboard instantiateViewControllerWithIdentifier:@"SFImagePicker"];
     next.delegate = self;
     next.option = SFImagePickerCameraFront;
+    next.showPreview = YES;
     [self presentViewController:next animated:YES completion:^{
         
     }];

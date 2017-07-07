@@ -16,6 +16,9 @@
 // CELL
 #import "SFImagePickerCell.h"
 
+// Preview
+#import "SFImagePickerPreview.h"
+
 // Defines
 #define  KCapturePhotoWithVolume   @"outputVolume"
 #define RGBA(r, g, b, a)                [UIColor colorWithRed:r/255.0 green:g/255.0 blue:b/255.0 alpha:a]
@@ -43,6 +46,9 @@
 
 // Handle audioSession to take photo with volume buttons
 @property (strong, nonatomic) AVAudioSession *audioSession;
+
+// Preview
+@property (nonatomic, strong) UIViewController *currentBodyViewController;
 
 @end
 
@@ -85,6 +91,14 @@
     
     // Initial audio session
     [self initAudioSession];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    // Set Preview vontainer hidden
+    self.viewContainer.hidden = YES;
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -475,12 +489,100 @@
 
 - (void)photoSelected:(UIImage *)image
 {
-    if ([self.delegate respondsToSelector:@selector(selectedPhoto:)]) {
-        [self.delegate selectedPhoto:image];
+    if (self.showPreview) {
+        
+        [self showSelectedPhotoPreviewWithSelectedImage:image];
     }
-    
-    [self closeSFImagePicker];
+    else {
+        if ([self.delegate respondsToSelector:@selector(selectedPhoto:)]) {
+            [self.delegate selectedPhoto:image];
+        }
+        
+        [self closeSFImagePicker];
+    }
 }
+
+// MARK: - Open Preview
+
+- (void)showSelectedPhotoPreviewWithSelectedImage:(UIImage *)image
+{
+    // Open preview
+    __weak  SFImagePickerPreview *next = [[self storyboard] instantiateViewControllerWithIdentifier:@"SFImagePickerPreview"];
+    next.image = image;
+    [next setDismissPreview:^(UIImage *image, BOOL retake) {
+        
+        if (retake) {
+            
+            [self hideSelectedPhotoPreview:next];
+        }
+        else {
+            if ([self.delegate respondsToSelector:@selector(selectedPhoto:)]) {
+                [self.delegate selectedPhoto:image];
+            }
+            
+            [self closeSFImagePicker];
+        }
+        
+    }];
+    
+    [self showSelectedPhotoPreview:next];
+}
+
+- (void)showSelectedPhotoPreview:(UIViewController *)next
+{
+    // Make Preview visible
+    self.viewContainer.hidden = NO;
+    
+    [UIView transitionWithView:self.viewContainer duration:0.5f options:UIViewAnimationOptionTransitionCrossDissolve animations:^{
+        
+        self.viewContainer.alpha = 1;
+        
+        // Clear body container if have visible view inside
+        if (self.currentBodyViewController != nil) {
+            [self.currentBodyViewController willMoveToParentViewController:nil];
+            [self.currentBodyViewController.view removeFromSuperview];
+            [self.currentBodyViewController removeFromParentViewController];
+        }
+        
+        // Set next VC in body container
+        [self addChildViewController:next];
+        next.view.frame = self.viewContainer.bounds;
+        [self.viewContainer addSubview:next.view];
+        [next didMoveToParentViewController:self];
+        self.currentBodyViewController = next;
+        
+    } completion:^(BOOL finished) {
+        // Do sth if needed
+    }];
+    
+}
+
+- (void)hideSelectedPhotoPreview:(UIViewController *)next
+{
+    [UIView transitionWithView:self.viewContainer duration:0.5f options:UIViewAnimationOptionTransitionCrossDissolve animations:^{
+        
+        self.viewContainer.alpha = 0;
+        
+    } completion:^(BOOL finished) {
+        
+        // Clear body container if have visible view inside
+        if (self.currentBodyViewController != nil) {
+            [self.currentBodyViewController willMoveToParentViewController:nil];
+            [self.currentBodyViewController.view removeFromSuperview];
+            [self.currentBodyViewController removeFromParentViewController];
+            
+            self.currentBodyViewController = nil;
+        }
+        
+        [next.view removeFromSuperview];
+        
+        
+        // Make preview hidden
+        self.viewContainer.hidden = YES;
+    }];
+    
+}
+
 
 
 @end
