@@ -73,7 +73,7 @@
 {
     UIImage *img = [self.imgOriginal.copy resizeImageWithResolution:300];
     
-    _imgFilterdGreyScale = [self convertImageToGrayScale:img];
+    _imgFilterdGreyScale = [self convertImage:img withType:SFImagePickerFilterType_GreyScale];
     _imgFilterdSpia = [self convertImage:img withType:SFImagePickerFilterType_Sepia];
     _imgFilterdBlur = [self convertImage:img withType:SFImagePickerFilterType_Blur];
     _imgFilterdClamp = [self convertImage:img withType:SFImagePickerFilterType_Clamp];
@@ -105,6 +105,7 @@
     BOOL selected = _selectedType == indexPath.row ? YES : NO;
     
     cell.imgSelected.hidden = !selected;
+    cell.viewImgSelected.hidden = !selected;
     cell.type = indexPath.row;
     
     if (indexPath.row == 0) {
@@ -259,38 +260,6 @@
 
 // MARK: - FILTERS
 
-- (UIImage *)convertImageToGrayScale:(UIImage *)image
-{
-    UIImage *newImage;
-    @autoreleasepool {
-        // Create image rectangle with current image width/height
-        CGRect imageRect = CGRectMake(0, 0, image.size.width, image.size.height);
-        
-        // Grayscale color space
-        CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceGray();
-        
-        // Create bitmap content with current image size and grayscale colorspace
-        CGContextRef context = CGBitmapContextCreate(nil, image.size.width, image.size.height, 8, 0, colorSpace, kCGImageAlphaNone);
-        
-        // Draw image into current context, with specified rectangle
-        // using previously defined context (with grayscale colorspace)
-        CGContextDrawImage(context, imageRect, [image CGImage]);
-        
-        // Create bitmap image info from pixel data in current context
-        CGImageRef imageRef = CGBitmapContextCreateImage(context);
-        
-        // Create a new UIImage object
-        newImage = [UIImage imageWithCGImage:imageRef];
-        
-        // Release colorspace, context and bitmap information
-        CGColorSpaceRelease(colorSpace);
-        CGContextRelease(context);
-        CFRelease(imageRef);
-    }
-    // Return the new grayscale image
-    return newImage;
-}
-
 - (UIImage *)convertImage:(UIImage *)imgOriginal withType:(SFImagePickerFilterType)type
 {
     UIImage *newImage;
@@ -332,6 +301,10 @@
         CIFilter *filter = [CIFilter filterWithName:@"CISepiaTone"];
         NSNumber *scale = [NSNumber numberWithFloat:0.6];
         [filter setValue:scale forKey:@"inputIntensity"];
+        return filter;
+    }
+    else if (type == SFImagePickerFilterType_GreyScale) {
+        CIFilter *filter = [CIFilter filterWithName:@"CIPhotoEffectNoir"];
         return filter;
     }
     else if (type == SFImagePickerFilterType_Blur) {

@@ -24,6 +24,8 @@
     // Image
     [_image.layer setCornerRadius:2.0f];
     _image.layer.masksToBounds = YES;
+    CGFloat radius = fmin(_viewImgSelected.frame.size.height , _viewImgSelected.frame.size.width);
+    [_viewImgSelected.layer setCornerRadius:(radius/2.0)];
 }
 
 // MARK: - ACTION

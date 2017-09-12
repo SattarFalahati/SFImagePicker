@@ -25,6 +25,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *image;
 @property (weak, nonatomic) IBOutlet UILabel     *lblFilterType;
 @property (weak, nonatomic) IBOutlet UIImageView *imgSelected;
+@property (weak, nonatomic) IBOutlet UIView *viewImgSelected;
 @property (nonatomic) SFImagePickerFilterType type;
 
 @end
