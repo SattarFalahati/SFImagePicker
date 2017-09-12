@@ -38,12 +38,11 @@ SFImagePickerCameraOption = SFImagePickerCameraFront/SFImagePickerCameraBack;
 ```
 showPreview = Yes/No;
 ```
-In preview page you can save image to gallery or retake or send photo 
-
+In preview page you can save image to gallery or retake or send photo also you can filter your photo
 
 ## Versioning
 
-Version 2.0.0
+Version 3.0.0
 
 ## Author
 Sattar Falahati 

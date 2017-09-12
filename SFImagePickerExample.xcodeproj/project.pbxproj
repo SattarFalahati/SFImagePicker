@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		DC464A6C1F0F74BC009DBB45 /* ImagePicker.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DC464A6B1F0F74BC009DBB45 /* ImagePicker.storyboard */; };
 		DC464A6F1F0F7550009DBB45 /* SFImagePickerPreview.m in Sources */ = {isa = PBXBuildFile; fileRef = DC464A6E1F0F7550009DBB45 /* SFImagePickerPreview.m */; };
+		DC9CEEBC1F68139B0029E2C6 /* SFImagePickerFilterCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DC9CEEBB1F68139B0029E2C6 /* SFImagePickerFilterCollectionCell.m */; };
 		F5E9F47E1E8E87A000BF5756 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F5E9F47D1E8E87A000BF5756 /* main.m */; };
 		F5E9F4811E8E87A000BF5756 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F5E9F4801E8E87A000BF5756 /* AppDelegate.m */; };
 		F5E9F4841E8E87A000BF5756 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5E9F4831E8E87A000BF5756 /* ViewController.m */; };
@@ -23,6 +24,8 @@
 		DC464A6B1F0F74BC009DBB45 /* ImagePicker.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ImagePicker.storyboard; sourceTree = "<group>"; };
 		DC464A6D1F0F7550009DBB45 /* SFImagePickerPreview.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFImagePickerPreview.h; sourceTree = "<group>"; };
 		DC464A6E1F0F7550009DBB45 /* SFImagePickerPreview.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFImagePickerPreview.m; sourceTree = "<group>"; };
+		DC9CEEBA1F68139B0029E2C6 /* SFImagePickerFilterCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFImagePickerFilterCollectionCell.h; sourceTree = "<group>"; };
+		DC9CEEBB1F68139B0029E2C6 /* SFImagePickerFilterCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFImagePickerFilterCollectionCell.m; sourceTree = "<group>"; };
 		F5E9F4791E8E87A000BF5756 /* SFImagePickerExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SFImagePickerExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5E9F47D1E8E87A000BF5756 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		F5E9F47F1E8E87A000BF5756 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -101,6 +104,8 @@
 				F5E9F4981E8E888C00BF5756 /* SFImagePickerCell.m */,
 				DC464A6D1F0F7550009DBB45 /* SFImagePickerPreview.h */,
 				DC464A6E1F0F7550009DBB45 /* SFImagePickerPreview.m */,
+				DC9CEEBA1F68139B0029E2C6 /* SFImagePickerFilterCollectionCell.h */,
+				DC9CEEBB1F68139B0029E2C6 /* SFImagePickerFilterCollectionCell.m */,
 			);
 			path = SFImagePicker;
 			sourceTree = "<group>";
@@ -181,6 +186,7 @@
 				F5E9F49A1E8E888C00BF5756 /* SFImagePicker.m in Sources */,
 				F5E9F4841E8E87A000BF5756 /* ViewController.m in Sources */,
 				F5E9F4811E8E87A000BF5756 /* AppDelegate.m in Sources */,
+				DC9CEEBC1F68139B0029E2C6 /* SFImagePickerFilterCollectionCell.m in Sources */,
 				DC464A6F1F0F7550009DBB45 /* SFImagePickerPreview.m in Sources */,
 				F5E9F49B1E8E888C00BF5756 /* SFImagePickerCell.m in Sources */,
 				F5E9F47E1E8E87A000BF5756 /* main.m in Sources */,

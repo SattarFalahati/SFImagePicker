@@ -11,7 +11,7 @@
 /** 
  * A class to use Camera and gallery of the phone 
  * To implement and make this class working :
- * A) Copy SFImagePicker.h/m, SFImagePickerCell.h/m, SFImagePickerPreview.h/m and ImagePicker.storyboard to your project
+ * A) Copy SFImagePicker.h/m , SFImagePickerCell.h/m and ImagePicker.storyboard to your project
  * B) You can change icons but if you want to use icons copy the SFImagePicker folder from Images.cxassets
  * C) Don't Forget about Plist and add this lines :
     <key>NSCameraUsageDescription</key>
@@ -50,7 +50,6 @@ typedef NS_ENUM(NSUInteger, SFImagePickerCameraOption) {
 @property (weak, nonatomic) IBOutlet UICollectionView *imageCollection;
 @property (weak, nonatomic) IBOutlet UIButton *btnChangeCamera;
 @property (weak, nonatomic) IBOutlet UIButton *btnResize;
-
 // Container
 @property (weak, nonatomic) IBOutlet UIView *viewContainer;
 
